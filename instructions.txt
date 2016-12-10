@@ -1,32 +1,5 @@
-DICTIONARIES:
-
-values = {"A1": [1,2,3,4,5,6,7,8,9]} ... {"I9": [4]}
-
-columns = {"A1": [A1, A2, A3, A4, A5, A6, A7, A8, A9]}
-rows =  {"B1": [A1, B1, C1, D1, E1, F1, G1, H1, I1]}
-squares = {"A2": [A1, A2, A3, B1, B2, B3, C1, C2, C3]}
-
-
-FUNCTIONS:
-
-remove:
-1. Removes a value from a given unit
-2. Checks if the unit only has one possible value
-3. Assigns the value to the unit
-4. Checks if the units in the col, row and squ only has one possible value
-5. Assigns the value to the unit
-5. Checks if there exists integer that only can be in one place in the col, row and squ
-6. Assigns the value to the unit
-7. Asserts that every unit in the grid has at least one possible value
-8. If not all have possible value,
-
-assign:
-1. Removes all other values from the unit
-2. Removes the value from the units in the col, row and square
-
-
 WHEN NOTHING MORE TO REMOVE/ASSIGN:
-GRID
+GRID  (=values)
 Lös
 Fastna
 ->  GRID KOPIA (Sätt in ett possible value) (kanske typ trying=[A1, 1]
