@@ -1,17 +1,24 @@
 WHEN NOTHING MORE TO REMOVE/ASSIGN:
-GRID  (=values)
+
 Lös
 Fastna
-->  GRID KOPIA (Sätt in ett possible value) (kanske typ trying=[A1, 1]
+->  VALUES KOPIA (Sätt in ett possible value) (kanske typ trying=[A1, 1])
     Lös
     Fastna
-    ->  GRID KOPIA (Sätt in ett possible value)
+    ->  VALUES KOPIA (Sätt in ett possible value)
         Lös
         Fastna
-        ->  GRID KOPIA (Inga fler possible values)
+        ->  VALUES KOPIA (Inga fler possible values)
     Stryk possible value
-    ->  GRID KOPIA (Sätt in ett possible value)
+    ->  VALUES KOPIA (Sätt in ett possible value)
         Lös
         Returnera lösning
 
 Alternativt inga fler possible values och inga kopior = olösbart
+
+
+MOTHER not solved -> solve(child, some value)
+    CHILD contradiction -> return False
+MOTHER not solved -> solve(child, some value)
+    CHILD not solved -> solve(child, some value)
+        GRANDCHILD solved -> return True
