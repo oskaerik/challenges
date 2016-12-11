@@ -61,10 +61,10 @@ class Solver(object):
         # Solve the puzzle (if not already solved)
         self.values = self.solve(self.values)
 
-        # if self.values:
-        #     self.paint(self.values)
-        # else:
-        #     print("Critical error in solving")
+        if self.values:
+            self.paint(self.values)
+        else:
+            print("Critical error in solving")
 
     def parse(self, lines):
         for r, line in enumerate(lines):
