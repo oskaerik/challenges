@@ -59,11 +59,12 @@ class Solver(object):
         self.parse(lines)
 
         # Solve the puzzle (if not already solved)
-        if self.solve(self.values):
-            self.paint(self.values)
-        else:
-            print("Critical error in solving")
-            quit(1)
+        self.values = self.solve(self.values)
+
+        # if self.values:
+        #     self.paint(self.values)
+        # else:
+        #     print("Critical error in solving")
 
     def parse(self, lines):
         for r, line in enumerate(lines):
@@ -143,7 +144,7 @@ class Solver(object):
         """Solves the puzzle recursively"""
         if solved(mother) == 1:
             # If the puzzle is solved, return true
-            return True
+            return mother
         elif solved(mother) == -1:
             # If the puzzle is unsolvable, return false
             return False
@@ -156,9 +157,9 @@ class Solver(object):
         self.assign(child, find[0], find[1])
 
         # Try to solve the child
-        if self.solve(child):
-            self.values = child
-            return True
+        child = self.solve(child)
+        if child:
+            return child
         else:
             self.remove(mother, find[0], find[1])
             return self.solve(mother)
@@ -169,31 +170,3 @@ class Solver(object):
             for n in self.numbers:
                 if len(values[l + n]) > 1:
                     return l + n, values[l + n][0]
-
-"""
-    def solve(self, mother):
-        child = copy.deepcopy(mother)
-
-        if solved(child):
-            self.paint(child)
-            quit(1)
-
-        for l in self.letters:
-            for n in self.numbers:
-                if len(child[l + n]) > 1:
-                    print("SOLVE assigning " + child[l + n][0] + " to " + l+n)
-                    # Try assigning a possible value to a square
-                    assign = child[l + n][0]
-                    self.assign(child, l + n, child[l + n][0])
-                    self.paint(child)
-
-                    # If there is a unit with no possible values, reverse
-                    for u in child:
-                        if len(child[u]) < 1:
-                            print("Contradiction on " + u + ", reverting " + assign + " on square " + l+n)
-                            child = copy.deepcopy(mother)
-                            self.remove(child, l + n, child[l + n][0])
-
-                    # If all squares had possible values, solve the grandchild
-                    self.solve(child)
-"""
